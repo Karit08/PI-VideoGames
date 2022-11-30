@@ -16,7 +16,7 @@ videogamesRouter.get('/', async (req,res)=>{
         };
     } catch(e){
         // return res.status(400).json({ error: e.message});
-        return res.json({ error: e.message});
+       res.json({ error: e.message});
     }
     
 });
@@ -47,7 +47,7 @@ videogamesRouter.post('/', async ( req, res)=>{
         };
     }catch(e){
         // console.log(e);
-        return res.json({ error: e.message});
+       res.json({ error: e.message});
     };
 });
 

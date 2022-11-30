@@ -10,7 +10,7 @@ videogameRouter.get('/:idVideogame', async (req, res) =>{
         res.send(infID) : 
         res.status(404).send(`The ID ${id} does not match with any game`);
     }catch(e){
-        res.send(e.messege); 
+        res.json({ error: e.message});
     };
 });
 

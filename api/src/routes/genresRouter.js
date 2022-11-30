@@ -9,7 +9,7 @@ genresRouter.get('/', async (req,res)=>{
         const genre = await getGenresGames();
         res.status(200).send(genre);
     }catch(e){
-        return res.json({ error: e.message});
+        res.json({ error: e.message});
     };
 });
 
