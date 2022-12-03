@@ -60,7 +60,7 @@ module.exports = videogamesRouter;
     "released": "2019-08-18",
     "rating": "10.3",
     "platforms": ["henry", "PC"],
-    "image": "https://www.trecebits.com/wp-content/uploads/2019/04/11854.jpg",
+    "image": "https://img.freepik.com/vector-premium/ilustracion-dibujos-animados-controlador-palo-playstation-vector-premium_262962-161.jpg?w=2000",
     "genres": ["Card", "Board Games", "Racing"]
 } 
 */
