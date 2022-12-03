@@ -1,0 +1,24 @@
+.card{
+    background: #343a40;
+    width: 350px;
+    height: 500 px; 
+    -webkit-box-shadow: 2px 2px 17px 5px rgba(73,80,87,0.5);
+    -moz-box-shadow: 2px 2px 17px 5px rgba(73,80,87,0.5);
+    box-shadow: 2px 2px 17px 5px rgba(73,80,87,0.5);
+    transition: transform 250ms ease;
+}
+
+.card__img{
+    width: 100%;
+}
+
+.card__title{
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    padding-block: 16px;
+}
+
+.card:hover{
+    transform:scale(1.03);
+}
