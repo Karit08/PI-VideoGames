@@ -1,51 +1,104 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getVideogames } from "../../redux/actions/index";
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector} from "react-redux";
+// import { NavLink } from "react-router-dom";
+import Funcionality from "../Funcionality/Funcionality";
 import Videogames from "../Videogames/Videogames";
+import Pagination from "../Pagination/Pagination";
+import SearchBar from "../SearchBar/SearchBar";
+import { getVideogames, filterByGenre, filterBySource, sortBy } from "../../redux/actions/index";
 // import Spinner from "../Spinner/Spinner"
 
 export default function Home (){
-   const dispatch = useDispatch();
-   const allVideogames = useSelector((state) => state.videogames );
-//    const [page, setPage] =  useState(1);
+    const allVideogames = useSelector((state) => state.allvideogames );
+    const [currentPage, setCurrentPage] = useState(1); 
+    const [videogamesPerPage, setVideogamesPerPage ] = useState(5);
+    const lastIndex = currentPage * videogamesPerPage; //1*15 = 15
+    const firstIndex=  lastIndex - videogamesPerPage;//15 - 15 = 0
+    const currentVideogames = allVideogames.slice(firstIndex, lastIndex);
 
-   useEffect( ()=>{
+    const dispatch = useDispatch();
+    // ...............................Paginado................................
+    const handleSetPage = num =>{
+        setCurrentPage(num);
+    };
+
+    const handleSetMoviesPerPage = num =>{
+        setCurrentPage(1);
+        setVideogamesPerPage(parseInt(num));
+    };
+    
+    useEffect( ()=>{
         dispatch(getVideogames());
-   },[dispatch]);
+    },[dispatch]);
 
-   function handleClick(e){
-    e.preventDefault();
-    dispatch(getVideogames());
+   // ...............................Filtros................................
 
-   }
+    function handleSort(e){
+        e.preventDefault();
+        dispatch(sortBy(e.target.value));
+        setCurrentPage(1);
+    }
+    
+    function handleFilter(e) {
+        e.preventDefault();
+        dispatch(filterByGenre(e.target.value));
+        setCurrentPage(1);
+        // e.preventDefault();
+        // if(e.target.value === '') {
+        //     dispatch(getVideogames());
+        // } else {
+        //     dispatch(filterByGenre(e.target.value));
+        //     setCurrentPage(1);
+        // };
+    };
+    
+    function handleSource(e){
+        // e.preventDefault();
+        dispatch(filterBySource(e.target.value));
+        setCurrentPage(1);
+    };
 
-   return (
+    
+
+    // function handleClick(e){
+    //     e.preventDefault();
+    //     dispatch(getVideogames());
+    // }
+
+    return (
     <div>
+       
+        <br />
         <h1>VIDEOGAME</h1>
         <p>Trying to decide what kind of videogame you prefer? Browse through our list of videogame using our filter tool and find the bet videogame for you.</p>
         <p>And if you don't find an ideal game, you can create it.</p>
-        <NavLink to='/character'> CREATE VIDEOGAME </NavLink>
-        <button onClick={e => {handleClick(e)}}>Show all Reload</button>
+        {/* <NavLink to='/character'> CREATE VIDEOGAME </NavLink>
+        <button onClick={e => {handleClick(e)}}>Show all Reload</button> */}
         <div>
-            <select name="Genre" id="">
-                <option value=""></option>
-            </select>
-            <select name="Api/Db" id="">
-                <option value="mayor">Db</option>
-                <option value="menor">Api</option>
-            </select>
-            <select name="Alphabetic" id="">
-                <option value="az">A-Z</option>
-                <option value="za">Z-A</option>
-            </select>
-            <select name="Rating" id="">
-                <option value="mayor">+ Rating</option>
-                <option value="menor">- Rating</option>
-            </select>
             <div>
-                <Videogames/>
+                <Funcionality handleSort={handleSort} handleFilter= {handleFilter} handleSource={handleSource}/>
+            </div>
+            <br />
+            <div>
+                <Pagination 
+                    allVideogames={allVideogames.length} 
+                    videogamesPerPage= {videogamesPerPage} 
+                    handleSetPage = {handleSetPage}
+                />
+                <select name="" id="" onChange={(e) => handleSetMoviesPerPage(e.target.value)}>
+                     <option value="5">5</option>
+                     <option value="10">10</option>
+                     <option value="15">15</option>
+                </select>
+            </div>
+            <br />
+            <div>
+                <SearchBar />
+            </div>
+            <br />
+            <div>
+                <Videogames currentVideogames={currentVideogames} />
             </div>
         </div>
 

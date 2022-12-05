@@ -15,7 +15,7 @@ export default function Pagination({allVideogames, videogamesPerPage, handleSetP
                 {
                 numberPage?.map(number => ( 
                     <span key={number}>
-                        <button onClick={() => handleSetPage(number)} className={s.btn}>
+                        <button key={number} onClick={() => handleSetPage(number)} className={s.btn}>
                             {number}
                         </button> 
                     </span>

@@ -8,33 +8,19 @@
   }
 
 .paginacion button {
-  color: black;
+  border: 1px solid #2e518b; /*anchura, estilo y color borde*/
+  padding: 8px 16px; /*espacio alrededor texto*/
+  background-color: #2e518b; /*color botón*/
+  color: #ffffff; /*color texto*/
+  text-decoration: none; /*decoración texto*/
+  text-transform: uppercase; /*capitalización texto*/
+  font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+  border-radius: 120px; /*bordes redondos*/
   float: left;
-  padding: 8px 16px;
-  border: 1px solid #370617;
-  margin: 0 4px
+  margin: 0 4px;
 }
 
 .paginacion button:focus {
-  background-color: black;
-  color: azure;
-}
-
-.paginacion button.activo {
-    background-color: #370617;
-    color: white;
-  }
-
-.paginacion button:hover:not(.activo){
-    background-color: gray;
-  }
-
-.paginacion button:first-child {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-  }
-
-.paginacion button:last-child {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+  background-color: white;
+  color: #2e518b;
 }
