@@ -36,7 +36,7 @@ videogamesRouter.post('/', async ( req, res)=>{
             });
             const relation = await Genre.findAll({ 
                 where: { 
-                    name: genres
+                    name: genres,
                 }
             });
             await newGame.addGenre(relation);
@@ -50,6 +50,7 @@ videogamesRouter.post('/', async ( req, res)=>{
        res.json({ error: e.message});
     };
 });
+
 
 module.exports = videogamesRouter;
 

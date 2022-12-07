@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { query, response } = require("express");
 require("dotenv").config();
-const { API_KEY } = process.env;
+const {API_KEY } = process.env;
 const { Videogame, Genre } = require("../db");
 
 // ---------------------------------- GET/videogames ----------------------------------
@@ -23,27 +23,41 @@ const getApiGames = async () => {
           platforms: game.platforms?.map((e) => e.platform.name),
         });
       });
-      // console.log(all_Games)
     }
     return all_Games;
   } catch (e) {
-    throw new Error(e.message);
+    console.log(e.message);
   }
 };
 
 const getDbGames = async () => {
   try {
-    return await Videogame.findAll({
-      include: {
-        model: Genre,
-        atributes: ["name"],
-        throught: {
-          attributes: [],
+    const game= await Videogame.findAll({
+        // attributes: ['id', 'description', 'released', 'rating', 'platforms', 'image', 'is_Db', 'name'],
+        include: {
+          model: Genre,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
         },
-      },
     });
+    const OrganizeInfo = (game) => {
+      return {
+        id: game.id,
+        name: game.name,
+        image: game.image,
+        rating: game.rating,
+        // released: game.released,
+        // description: game.description,
+        genres: game.genres.map((genre) => genre.name),
+        platforms: game.platforms,
+      };
+    };
+    const org1 = game.map(l => OrganizeInfo(l));
+    return org1;
   } catch (e) {
-    throw new Error(e.message);
+    console.log(e.message);
   }
 };
 
@@ -55,7 +69,7 @@ const getAllGames = async () => {
     const games = db.concat(api);
     return games;
   } catch (e) {
-    throw new Error(e.message);
+    console.log(e.message);
   }
 };
 

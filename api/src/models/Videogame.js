@@ -24,12 +24,12 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
     },
     platforms:{
-      // type: DataTypes.ARRAY(DataTypes.TEXT),
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+      // type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
     image: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },
     is_Db: {
       type: DataTypes.BOOLEAN,

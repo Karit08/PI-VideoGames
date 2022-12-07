@@ -25,14 +25,14 @@ const gameByParamsApi = async (id) => {
             throw new Error (`Failed to find game with Id: ${id}`);
         };
     } catch(e) {
-        throw new Error( e.message);
+        console.log( e.message);
     };
 };
 
 
 const gameByParamsDb = async (id) => {
     try {
-        return await Videogame.findByPk(id, {
+        const ok= await Videogame.findByPk(id, {
             include: [{
                 model: Genre, 
                 atributes: ['name'], 
@@ -41,8 +41,21 @@ const gameByParamsDb = async (id) => {
                 },
             }],
         });
+        const OrganizeInfo = (game) => {
+            return {
+              id: game.id,
+              name: game.name,
+              image: game.image,
+              rating: game.rating,
+              released: game.released,
+              description: game.description,
+              genres: game.genres.map((genre) => genre.name),
+              platforms: game.platforms,
+            };
+        };
+        return OrganizeInfo(ok); 
     } catch(e) {
-        throw new Error(e.message);
+        console.log(e.message);
     };
 };
 
