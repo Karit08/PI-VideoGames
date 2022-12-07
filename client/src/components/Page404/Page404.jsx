@@ -1,10 +1,19 @@
 import React from "react";
+import s from './Page404.module.css';
 
 const Page = ()=>{
-    return(
+    return (
         <>
-        <img src="https://2.bp.blogspot.com/-R9QU8oPrNeI/WhJJBx3OIvI/AAAAAAAAWCc/Neb270ql4xosavSLPnL74rKC5ud_H59igCLcBGAs/s1600/blogger-custom-domain-404-error.jpg" alt="Page404" />
+        <div className={s.conteiner}>
+            <h1>Error 404 🥺</h1>
+            <br />
+            <br />
+            <div class={s.bar}>
+            <div class={s.ball}></div>
+            </div>
+        </div>
         </>
+       
     );
 };
 

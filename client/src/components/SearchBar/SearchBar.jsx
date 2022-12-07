@@ -1,8 +1,8 @@
 import React from "react";
-// import s from './SearchBar.module.css';
+import s from './SearchBar.module.css';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getName } from "../../redux/actions/index"
+import { getName } from "../../redux/actions/index";
 
 export default function SearchBar(){
     const dispatch = useDispatch();
@@ -24,10 +24,10 @@ export default function SearchBar(){
     };
 
     return (
-        <div >
-           <input type="text" placeholder="Search name ..." id="name" autoComplete="off"
+        <div className={s.input_group}>
+           <input className={s.input} type="text" placeholder="Search by name ..." id="name" autoComplete="off"
                         value={name} onChange={(e) => handleChange(e)}/> 
-           <button type="submit" onClick={(e) => handleSubmit(e)}>Search</button>
+           <button className={s.button_submit} type="submit" onClick={(e) => handleSubmit(e)}>Search</button>
         </div>
     );
 };

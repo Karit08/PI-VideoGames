@@ -72,13 +72,27 @@ export const getName = (name) => (dispatch) => {
     };
 };
 
-export const getDetails = (id) => async (dispatch) => {
-    dispatch(setLoading(true));
+export const postVideogame = (data) => (dispatch) => {
+        // const { data } = await axios.post('http://localhost:3001/videogames',data);
+        const res = fetch('http://localhost:3001/videogames', {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {"Content-type": "application/json; charset=UTF-8"} 
+        })
+        .then(response => response.json()).catch(e => console.log(e));
+        return dispatch({
+            type: actions.POST_VIDEOGAME,
+            payload: res,
+        });
+
+};
+
+export const getDetails = (id) => async (dispatch) => { 
     try{
-        await fetch(`http://localhost:3001/videogame/${id}`)
-             .then(response => response.json())
-             .then(detail => dispatch({type: actions.GET_DETAIL, payload: detail}));
-        dispatch(setLoading(false));
+        let details = await axios.get(`http://localhost:3001/videogame/${id}`);
+        return dispatch({
+            type: actions.GET_DETAIL, 
+            payload: details.data});
     }catch(e){
         console.log(e);
     };

@@ -91,6 +91,10 @@ export default function rootReducer(state= initialState, action){
                 ...state,
                 allvideogames: action.payload,
             };
+        case actions.POST_VIDEOGAME:
+            return{
+                ...state,
+            }
         case actions.GET_DETAIL:
             return{
                 ...state,

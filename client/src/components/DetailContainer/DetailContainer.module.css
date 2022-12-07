@@ -1,0 +1,157 @@
+.back{
+    background-image: url('../../image/5.jpg') ;
+    /* background-color: black; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: auto;
+}
+
+.conteiner{
+    background-color: #364958;
+}
+
+.card{
+    display: flex;
+    flex-wrap: wrap;
+    margin-block: 2rem;
+    gap: 2rem;
+    max-width: 1200px;
+    margin-inline: auto;
+    align-items: center;
+    justify-content: center; 
+    background: #343a40;
+    width: 900px;
+    height: 500 px; 
+    -webkit-box-shadow: 2px 2px 17px 5px rgba(73,80,87,0.5);
+    -moz-box-shadow: 2px 2px 17px 5px rgba(73,80,87,0.5);
+    box-shadow: 2px 2px 17px 5px rgba(73,80,87,0.5);
+    transition: transform 250ms ease;
+}
+
+.card__img{
+    display: flex;
+    flex-wrap: wrap; 
+    margin-top: 20px;
+    margin-inline: auto;
+    align-items: center;
+    justify-content: center; 
+    width: 60%;
+}
+
+.card__title{
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    padding-block: 16px;
+}
+
+.card:hover{
+    transform:scale(1.03);
+}
+
+.fancy {
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 1.25em 2em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+    font-size: 13px;
+   }
+   
+   .fancy::before {
+    content: " ";
+    width: 1.5625rem;
+    height: 2px;
+    background: black;
+    top: 50%;
+    left: 1.5em;
+    position: absolute;
+    transform: translateY(-50%);
+    transform-origin: center;
+    transition: background 0.3s linear, width 0.3s linear;
+   }
+   
+   .fancy .text {
+    font-size: 1.125em;
+    line-height: 1.33333em;
+    padding-left: 2em;
+    display: block;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+   }
+   
+   .fancy .top_key {
+    height: 2px;
+    width: 1.5625rem;
+    top: -2px;
+    left: 0.625rem;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, left 0.3s ease-out;
+   }
+   
+   .fancy .bottom_key_1 {
+    height: 2px;
+    width: 1.5625rem;
+    right: 1.875rem;
+    bottom: -2px;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+   }
+   
+   .fancy .bottom_key_2 {
+    height: 2px;
+    width: 0.625rem;
+    right: 0.625rem;
+    bottom: -2px;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+   }
+   
+   .fancy:hover {
+    color: rgb(243, 241, 243);
+    background: rgb(153, 83, 194);
+   }
+   
+   .fancy:hover::before {
+    width: 0.9375rem;
+    background: white;
+   }
+   
+   .fancy:hover .text {
+    color: white;
+    padding-left: 1.5em;
+   }
+   
+   .fancy:hover .top-key {
+    left: -2px;
+    width: 0px;
+   }
+   
+   .fancy:hover .bottom-key-1,
+    .fancy:hover .bottom-key-2 {
+    right: 0;
+    width: 0;
+   }

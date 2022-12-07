@@ -1,19 +1,19 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
-// import { NavLink } from "react-router-dom";
 import Funcionality from "../Funcionality/Funcionality";
 import Videogames from "../Videogames/Videogames";
 import Pagination from "../Pagination/Pagination";
-import SearchBar from "../SearchBar/SearchBar";
 import { getVideogames, filterByGenre, filterBySource, sortBy } from "../../redux/actions/index";
+import NavBar from "../NavBar/NavBar";
+import s from './Home.module.css'
 // import Spinner from "../Spinner/Spinner"
 
 export default function Home (){
     const allVideogames = useSelector((state) => state.allvideogames );
     const [currentPage, setCurrentPage] = useState(1); 
     const [videogamesPerPage, setVideogamesPerPage ] = useState(5);
-    const lastIndex = currentPage * videogamesPerPage; //1*15 = 15
+    const lastIndex = currentPage * videogamesPerPage; //1*15 = 15 10
     const firstIndex=  lastIndex - videogamesPerPage;//15 - 15 = 0
     const currentVideogames = allVideogames.slice(firstIndex, lastIndex);
 
@@ -60,21 +60,15 @@ export default function Home (){
     };
 
     
-
-    // function handleClick(e){
-    //     e.preventDefault();
-    //     dispatch(getVideogames());
-    // }
-
     return (
-    <div>
-       
+    <div className={s.conteinerH}>
+        <NavBar/>
         <br />
-        <h1>VIDEOGAME</h1>
-        <p>Trying to decide what kind of videogame you prefer? Browse through our list of videogame using our filter tool and find the bet videogame for you.</p>
-        <p>And if you don't find an ideal game, you can create it.</p>
-        {/* <NavLink to='/character'> CREATE VIDEOGAME </NavLink>
-        <button onClick={e => {handleClick(e)}}>Show all Reload</button> */}
+        <div className={s.title}>
+            <h3>Trying to decide what kind of videogame you prefer? 🙄 </h3>
+        </div>
+        
+        
         <div>
             <div>
                 <Funcionality handleSort={handleSort} handleFilter= {handleFilter} handleSource={handleSource}/>
@@ -86,20 +80,23 @@ export default function Home (){
                     videogamesPerPage= {videogamesPerPage} 
                     handleSetPage = {handleSetPage}
                 />
-                <select name="" id="" onChange={(e) => handleSetMoviesPerPage(e.target.value)}>
+                <div>
+                    <br />
+                    <select className={s.select} name="" id="" onChange={(e) => handleSetMoviesPerPage(e.target.value)}>
                      <option value="5">5</option>
                      <option value="10">10</option>
                      <option value="15">15</option>
                 </select>
+                </div>
+                
             </div>
             <br />
-            <div>
-                <SearchBar />
-            </div>
             <br />
             <div>
                 <Videogames currentVideogames={currentVideogames} />
             </div>
+            <br />
+            <br />
         </div>
 
     </div>

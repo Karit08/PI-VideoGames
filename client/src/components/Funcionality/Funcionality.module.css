@@ -1,0 +1,39 @@
+.conteiner{
+    display: flex;
+    flex-wrap: wrap;
+    margin-block: 2rem;
+    gap: 2rem;
+    max-width: 1200px;
+    margin-inline: auto;
+    align-items: center;
+    justify-content: center; 
+    text-decoration: none;
+}
+
+.select {
+    color: #050505;
+    font-weight: bold;
+    position: relative;
+    display: flex;
+    width: 15em;
+    height: 3em;
+    line-height: 3;
+    background: #9c79a5;
+    border-color: #9c79a5;
+    overflow: hidden;
+    border-radius: 1em;
+ }
+ .select::after {
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #2b2e2e;
+    cursor: pointer;
+    pointer-events: none;
+    transition: 0.25s all ease;
+ }
+ .select:hover::after {
+    color: #23b499;
+ }

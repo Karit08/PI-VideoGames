@@ -1,6 +1,7 @@
 .paginacion {
     position: static;
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
     /* justify-content: space-around ;
     flex-wrap: nowrap; */
     padding: 0;
@@ -8,9 +9,12 @@
   }
 
 .paginacion button {
-  border: 1px solid #2e518b; /*anchura, estilo y color borde*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #9c79a5; /*anchura, estilo y color borde*/
   padding: 8px 16px; /*espacio alrededor texto*/
-  background-color: #2e518b; /*color botón*/
+  background-color: #9c79a5; /*color botón*/
   color: #ffffff; /*color texto*/
   text-decoration: none; /*decoración texto*/
   text-transform: uppercase; /*capitalización texto*/
