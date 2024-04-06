@@ -23,32 +23,36 @@ videogamesRouter.get('/', async (req,res)=>{
 
 videogamesRouter.post('/', async ( req, res)=>{
     let { name, description, released, rating, platforms, genres, image, is_Db } = req.body;
-    try{
-        if(name && description && platforms && genres && image){
-            let newGame = await Videogame.create({ 
-                name,
-                description,
-                released,
-                rating, 
-                platforms,
-                image,
-                is_Db,
-            });
-            const relation = await Genre.findAll({ 
-                where: { 
-                    name: genres,
-                }
-            });
-            await newGame.addGenre(relation);
-            res.status(200).send('Game has been successfully created');
-            // res.send(200).json({sucess: 'Game has been successfully created !!!'});
-        }else{
-            throw new Error('A required field is missing');
+    if(!name && !description && !released && !rating && !platforms && !genres && !image){
+        throw new Error ('Los campos requeridos no se llenaron correctamente');
+    }else{
+        try{
+            if(name && description && platforms && genres && image){
+                let newGame = await Videogame.create({ 
+                    name,
+                    description,
+                    released,
+                    rating, 
+                    platforms,
+                    image,
+                    is_Db,
+                });
+                const relation = await Genre.findAll({ 
+                    where: { 
+                        name: genres,
+                    }
+                });
+                await newGame.addGenre(relation);
+                res.status(200).send('Game has been successfully created');
+                // res.send(200).json({sucess: 'Game has been successfully created !!!'});
+            }else{
+                throw new Error('A required field is missing');
+            };
+        }catch(e){
+            // console.log(e);
+           res.json({ error: e.message});
         };
-    }catch(e){
-        // console.log(e);
-       res.json({ error: e.message});
-    };
+    }
 });
 
 
