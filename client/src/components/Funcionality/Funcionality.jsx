@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGenres } from "../../redux/actions/index";
 import s from './Funcionality.module.css';
 
-
 const Funcionality = ({handleSort, handleFilter, handleSource}) => {
 
     const dispatch = useDispatch();
@@ -25,7 +24,7 @@ const Funcionality = ({handleSort, handleFilter, handleSource}) => {
                     </select>
 
                     <select className={s.select} id="genre" onChange={e => handleFilter(e)}>
-                        <option value=''>Genres</option>
+                        <option value="">Genres</option>
                         {genres && genres.map(g => {
                             return (
                                 <option key={g.id} value={g.name}>{g.name}</option>
@@ -34,7 +33,7 @@ const Funcionality = ({handleSort, handleFilter, handleSource}) => {
                     </select>
 
                     <select className={s.select} onChange={e => handleSource(e)}>
-                        <option value=''>Filter by Origin</option>
+                        <option value="">Filter by Origin</option>
                         <option value="Api">API</option>
                         <option value="Created">Created</option>
                     </select>

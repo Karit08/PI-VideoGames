@@ -9,13 +9,12 @@ export default function Pagination({allVideogames, videogamesPerPage, handleSetP
     };
     
     return(
-        
             <nav>
                 <div className={s.paginacion}>
                 {
                 numberPage?.map(number => ( 
                     <span key={number}>
-                        <button key={number} onClick={() => handleSetPage(number)} className={s.btn}>
+                        <button key={number} onClick={() => handleSetPage(number)} >
                             {number}
                         </button> 
                     </span>

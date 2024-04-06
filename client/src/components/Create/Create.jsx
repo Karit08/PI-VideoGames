@@ -72,8 +72,18 @@ export default function Create(){
 
     let handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(postVideogame(input));
-        alert('Videogame created!!');
+        if(input.name === '' &&
+        input.image === "" &&
+        input.description === "" &&
+        input.released === "" &&
+        input.rating === "" &&
+        input.genres === [] &&
+        input.platforms === []){
+            alert('No se puede enviar formulario vacio');
+        }else{
+            dispatch(postVideogame(input));
+            alert('Videogame created!!');
+        };
         setInput({name: "",
         image: "",
         description: "",

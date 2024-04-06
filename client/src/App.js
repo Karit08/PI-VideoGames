@@ -15,7 +15,7 @@ function App() {
         <Route exact path={'/home'} component={Home}/>
         <Route exact path={'/create'} component={Create}/>
         <Route exact path={'/detail/:idVideogame'} component={DetailContainer} />
-         <Route path="*" component={Page}/>
+        <Route path="*" component={Page}/>
      </Switch>
     
     </>

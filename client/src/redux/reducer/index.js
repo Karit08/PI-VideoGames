@@ -15,8 +15,8 @@ export default function rootReducer(state= initialState, action){
             return {
                 // videogames: state.videogames.concat(action.payload)
                 ...state,
-                allvideogames: action.payload,
-                videogames: action.payload,
+                allvideogames: action.payload, // renderizo
+                videogames: action.payload, // copia
             };
         case actions.GET_GENRES:
             return{
@@ -29,7 +29,7 @@ export default function rootReducer(state= initialState, action){
             // const genreFiltered = action.payload === "" ? games : games.filter(e => e.genres?.includes(action.payload));
             return{
                 ...state,
-                allvideogames: filterGenre,   
+                allvideogames: filterGenre,  // [{}, {}, {}, {}] action 
             };
         case actions.FILTER_BY_SOURCE:
             const games1 = state.videogames;
